@@ -6,9 +6,15 @@
 
 @section('content')
     @foreach($tasks as $task)
-        <p>
-            {{ $task->is_complete ? 'yes' : 'no' }} {{ $task->name }} <a href="{{route('tasks.edit', $task)}}">Edit</a>
-        </p>
+        <div>
+            {{ $task->is_complete ? 'yes' : 'no' }}
+            {{ $task->name }}
+            <a href="{{route('tasks.edit', $task)}}">Edit</a>
+            <form action="{{route('tasks.complete', $task)}}" method="POST">
+                @csrf
+                <input type="submit">
+            </form>
+        </div>
     @endforeach
 
     <a href="{{route('tasks.create')}}">Create New Task</a>

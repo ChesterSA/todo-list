@@ -10,7 +10,6 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::all();
-
         return view('tasks.index', compact('tasks'));
     }
 
@@ -39,6 +38,14 @@ class TaskController extends Controller
     {
         $task->name = $request->name;
         $task->due_date = $request->due_date;
+        $task->save();
+
+        return redirect(route('tasks.index'));
+    }
+
+    public function complete(Task $task)
+    {
+        $task->is_complete = true;
         $task->save();
 
         return redirect(route('tasks.index'));
