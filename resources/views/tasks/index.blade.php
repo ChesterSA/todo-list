@@ -5,27 +5,32 @@
 @section('content')
     <h1 class="text-3xl w-full text-center px-auto">Tasks</h1>
 
-    <button class="text-1xl w-full text-center px-auto text-blue-600" onclick="openCreateModal()">Create New Task</button>
+    <button class="text-1xl w-full text-center px-auto text-blue-600" onclick="openCreateModal()">
+        Create New Task
+    </button>
 
-    <div class="fixed hidden inset-0 bg-white-600 bg-opacity-50 overflow-y-auto h-full w-full" id="create-modal">
+    <div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="create-modal">
         <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
             @include('forms.create')
         </div>
     </div>
 
-    <div class="fixed hidden inset-0 bg-white-600 bg-opacity-50 overflow-y-auto h-full w-full" id="edit-modal">
+    <div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="edit-modal">
         <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
             @include('forms.edit')
         </div>
     </div>
 
     <div class="flex items-center justify-center mt-5">
-        <div class="border-2 rounded pb-1">
-            <form method="GET" action="{{ route('tasks.index') }}" class="flex pb-0">
-                <input type="text" name="search" class="px-4 py-2 w-80" placeholder="Search by Name..." value="{{ $search }}">
+        <div class="border-2 rounded">
+            <form method="GET" action="{{ route('tasks.index') }}" class="flex mb-0">
+                <input type="text" name="search" class="px-4 py-3 w-80" placeholder="Search by Name..."
+                       value="{{ $search }}">
                 <button class="flex items-center justify-center px-4 border-l" type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                     </svg>
                 </button>
             </form>
@@ -70,21 +75,23 @@
     </div>
 
     <script>
-        function openCreateModal(){
+        function openCreateModal() {
             let modal = document.getElementById("create-modal");
             modal.style.display = "block";
         }
 
-        function closeCreateModal(){
+        function closeCreateModal() {
+            let modal = document.getElementById("create-modal");
+
             let name = document.getElementById("create_name");
             let date = document.getElementById("create_due_date");
 
-            if(name.checkValidity() && date.checkValidity()){
-                create_modal.style.display = "none";
+            if (name.checkValidity() && date.checkValidity()) {
+                modal.style.display = "none";
             }
         }
 
-        function openEditModal(task){
+        function openEditModal(task) {
             let name_input = document.getElementById("edit_name");
             name_input.value = task.name
             let date_input = document.getElementById("edit_due_date");
@@ -97,12 +104,14 @@
             edit_modal.style.display = "block";
         }
 
-        function closeEditModal(){
+        function closeEditModal() {
+            let modal = document.getElementById("edit-modal");
+
             let name = document.getElementById("edit_name");
             let date = document.getElementById("edit_due_date");
 
-            if(name.checkValidity() && date.checkValidity()){
-                edit_modal.style.display = "none";
+            if (name.checkValidity() && date.checkValidity()) {
+                modal.style.display = "none";
             }
         }
 
