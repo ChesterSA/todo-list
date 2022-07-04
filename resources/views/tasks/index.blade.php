@@ -63,7 +63,9 @@
                         @foreach($incomplete_tasks as $task)
                             @include('partials.row', ['task' => $task])
                         @endforeach
-
+                        <tr>
+                            <td colspan="5"><hr></td>
+                        </tr>
                         @foreach($complete_tasks as $task)
                             @include('partials.row', ['task' => $task])
                         @endforeach
