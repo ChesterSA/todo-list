@@ -105,7 +105,7 @@
                 edit_modal.style.display = "none";
             }
         }
-        
+
         window.onclick = function (event) {
             let create_modal = document.getElementById("create-modal");
             let edit_modal = document.getElementById("edit-modal");

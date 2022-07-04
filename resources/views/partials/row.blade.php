@@ -9,6 +9,13 @@
         {{ $task->due_date_formatted }}
     </td>
     <td class="text-sm text-gray-900 font-light px-6 py-2 whitespace-nowrap">
-        <p onclick="openEditModal({{$task}})">Edit</p>
+        <p class="inline" onclick="openEditModal({{ $task }})">Edit</p>
+
+        @if(!$task->is_complete)
+        <form method="POST" class="inline ml-3  " action="{{route('tasks.complete', $task)}}">
+            @csrf
+            <button type="submit">Complete</button>
+        </form>
+        @endif
     </td>
 </tr>
