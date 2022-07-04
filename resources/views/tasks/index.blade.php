@@ -121,10 +121,10 @@
             let create_modal = document.getElementById("create-modal");
             let edit_modal = document.getElementById("edit-modal");
 
-            if (event.target == create_modal) {
+            if (event.target === create_modal) {
                 create_modal.style.display = "none";
             }
-            if (event.target == edit_modal) {
+            if (event.target === edit_modal) {
                 edit_modal.style.display = "none";
             }
         }
