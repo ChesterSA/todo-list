@@ -9,10 +9,6 @@
         {{ $task->due_date_formatted }}
     </td>
     <td class="text-sm text-gray-900 font-light px-6 py-2 whitespace-nowrap">
-        <a href="{{route('tasks.edit', $task)}}">Edit</a>
-        {{--                                    <form action="{{route('tasks.complete', $task)}}" method="POST">--}}
-        {{--                                        @csrf--}}
-        {{--                                        <input type="submit" value="Complete Task">--}}
-        {{--                                    </form>--}}
+        <p onclick="openEditModal({{$task}})">Edit</p>
     </td>
 </tr>

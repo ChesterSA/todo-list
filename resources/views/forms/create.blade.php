@@ -1,3 +1,4 @@
+<h3 class="text-xl mb-4">Create New Task</h3>
 <form class="w-full max-w-sm" action="{{route('tasks.store')}}" method="POST">
     @csrf
     <div class="md:flex md:items-center mb-6">
@@ -29,7 +30,7 @@
         <div class="md:w-2/3">
             <input
                 class="shadow bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                type="submit" value="Create" id="store">
+                type="submit" value="Create" onclick="closeCreateModal()">
         </div>
     </div>
 </form>
