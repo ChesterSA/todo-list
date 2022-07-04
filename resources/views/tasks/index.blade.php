@@ -3,7 +3,7 @@
 @section('title', 'Index')
 
 @section('content')
-    <h1 class="text-3xl w-full text-center px-auto">Tasks</h1>
+    <h1 class="text-3xl w-full text-center px-auto">To Do List</h1>
 
     <button class="text-1xl w-full text-center px-auto text-blue-600" onclick="openCreateModal()">
         Create New Task
@@ -24,7 +24,7 @@
     <div class="flex items-center justify-center mt-5">
         <div class="border-2 rounded">
             <form method="GET" action="{{ route('tasks.index') }}" class="flex mb-0">
-                <input type="text" name="search" class="px-4 py-3 w-80" placeholder="Search by Name..."
+                <input type="text" name="search" class="px-4 py-2 w-80" placeholder="Search by Name..."
                        value="{{ $search }}">
                 <button class="flex items-center justify-center px-4 border-l" type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"

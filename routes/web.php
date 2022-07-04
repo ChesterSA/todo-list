@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('tasks.index'));
 });
 
 Route::prefix('tasks')->name('tasks.')->group(function () {

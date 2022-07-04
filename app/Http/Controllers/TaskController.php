@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
-use App\Task;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -14,10 +14,10 @@ class TaskController extends Controller
         $tasks = Task::where('name', 'LIKE', "%$search%")->orderBy('due_date')->get();
 
         $incomplete_tasks = $tasks->filter(function($task) {
-            return $task->is_complete == 0;
+            return $task->is_complete === 0;
         });
         $complete_tasks = $tasks->filter(function($task) {
-            return $task->is_complete == 1;
+            return $task->is_complete === 1;
         });
 
 

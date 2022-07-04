@@ -1,6 +1,5 @@
 <?php
 
-use App\Task;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
