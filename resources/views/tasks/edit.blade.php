@@ -10,6 +10,10 @@
             Name:
             <input type="text" name="name" value="{{ $task->name }}">
         </label>
+        <label>
+            Due Date:
+            <input type="datetime-local" name="due_date" value="{{ $task->due_date }}">
+        </label>
         <input type="submit">
     </form>
 @endsection

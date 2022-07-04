@@ -9,10 +9,11 @@
         <div>
             {{ $task->is_complete ? 'yes' : 'no' }}
             {{ $task->name }}
+            {{ $task->due_date }}
             <a href="{{route('tasks.edit', $task)}}">Edit</a>
             <form action="{{route('tasks.complete', $task)}}" method="POST">
                 @csrf
-                <input type="submit">
+                <input type="submit" value="Complete Task">
             </form>
         </div>
     @endforeach

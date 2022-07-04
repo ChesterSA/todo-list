@@ -9,7 +9,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::all()->sortBy('is_complete');
         return view('tasks.index', compact('tasks'));
     }
 
@@ -23,7 +23,7 @@ class TaskController extends Controller
         Task::create([
             'name' => $request->name,
             'is_complete' => false,
-            'due_date' => null
+            'due_date' => $request->due_date
         ]);
 
         return redirect(route('tasks.index'));
