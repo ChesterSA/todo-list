@@ -4,18 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
 use App\Task;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::all()->sortByDesc('due_date')->sortBy('is_complete');
-        return view('tasks.index', compact('tasks'));
-    }
+        $search = $request->search ?? '';
+        $tasks = Task::where('name', 'LIKE', "%$search%")->orderBy('due_date')->get();
 
-    public function create()
-    {
-        return view('tasks.create');
+        $incomplete_tasks = $tasks->filter(function($task) {
+            return $task->is_complete == 0;
+        });
+        $complete_tasks = $tasks->filter(function($task) {
+            return $task->is_complete == 1;
+        });
+
+
+        return view('tasks.index', compact('complete_tasks', 'incomplete_tasks', 'search'));
     }
 
     public function store(TaskRequest $request)

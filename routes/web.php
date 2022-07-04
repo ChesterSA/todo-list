@@ -19,5 +19,5 @@ Route::prefix('tasks')->name('tasks.')->group(function () {
     Route::post('{task}/complete', 'TaskController@complete')->name('complete');
 });
 Route::resource('tasks', 'TaskController')->except([
-    'get', 'destroy'
+    'create', 'get', 'destroy'
 ]);
