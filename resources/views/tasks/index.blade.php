@@ -6,7 +6,7 @@
 
 @section('content')
     @foreach($tasks as $task)
-        <div>
+        <div @if($task->isLate()) style="background: red" @endif>
             {{ $task->is_complete ? 'yes' : 'no' }}
             {{ $task->name }}
             {{ $task->due_date }}
