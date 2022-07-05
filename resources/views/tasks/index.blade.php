@@ -48,7 +48,7 @@
                             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                 Completed
                             </th>
-                            <th scope="col" colspan="2" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                 Task
                             </th>
                             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -64,7 +64,7 @@
                             @include('partials.row', ['task' => $task])
                         @endforeach
                         <tr>
-                            <td colspan="5"><hr></td>
+                            <td colspan="4"><hr></td>
                         </tr>
                         @foreach($complete_tasks as $task)
                             @include('partials.row', ['task' => $task])
