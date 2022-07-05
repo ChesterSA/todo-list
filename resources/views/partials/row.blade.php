@@ -1,14 +1,14 @@
-<tr @if($task->isLate()) class="bg-red-500" @endif>
-    <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+<tr class="@if($task->isLate()) bg-red-600 text-white @else text-gray-900 @endif">
+    <td class="px-6 py-2 whitespace-nowrap">
         {!! $task->icon !!}
     </td>
-    <td class="text-sm text-gray-900 font-light px-6 py-2 whitespace-nowrap">
+    <td class="text-sm font-light px-6 py-2 whitespace-nowrap">
         {{ $task->name }}
     </td>
-    <td class="text-sm text-gray-900 font-light px-6 py-2 whitespace-nowrap">
+    <td class="text-sm font-light px-6 py-2 whitespace-nowrap">
         {{ $task->due_at_formatted }}
     </td>
-    <td class="text-sm text-gray-900 font-light px-6 py-2 whitespace-nowrap">
+    <td class="px-6 py-2 whitespace-nowrap">
         <p class="inline cursor-pointer" onclick="openEditModal({{ $task }})">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline" fill="none" viewBox="0 0 24 24"
                  stroke="currentColor" stroke-width="2">
