@@ -1,4 +1,4 @@
-<tr class="@if($task->isLate()) bg-red-600 text-white @else text-gray-900 @endif">
+<tr class="@if($task->isLate()) bg-red-500 @endif">
     <td class="px-6 py-2 whitespace-nowrap">
         {!! $task->icon !!}
     </td>
