@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -20,19 +21,16 @@ class TaskController extends Controller
             return $task->completed_at !== null;
         });
 
-
         return view('tasks.index', compact('complete_tasks', 'incomplete_tasks', 'search'));
     }
 
     public function store(TaskRequest $request)
     {
-        $t = Task::create([
+        Task::create([
             'name' => $request->name,
             'completed_at' => null,
             'due_at' => $request->due_at
         ]);
-
-//        dd($t);
 
         return redirect(route('tasks.index'));
     }

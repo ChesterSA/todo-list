@@ -26,7 +26,7 @@
             <form method="GET" action="{{ route('tasks.index') }}" class="flex mb-0">
                 <input type="text" name="search" class="px-4 py-2 w-80" placeholder="Search by Name..."
                        value="{{ $search }}">
-                <button class="flex items-center justify-center px-4 border-l" type="submit">
+                <button class="flex items-center justify-center px-4 border-l-2" type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                          stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round"

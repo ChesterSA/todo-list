@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TasksSeeder extends Seeder
 {
@@ -30,7 +31,7 @@ class TasksSeeder extends Seeder
         DB::table('tasks')->insert([
             'name' => 'Old Task',
             'due_at' => Carbon::parse('-2 days')->setTime(10, 00),
-            'completed_at' => Carbon::parse('yesterday')
+            'completed_at' => Carbon::parse('-3 days')->setTime(11, 00)
 
         ]);
     }
