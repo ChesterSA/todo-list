@@ -97,7 +97,7 @@
             let name_input = document.getElementById("edit_name");
             name_input.value = task.name
             let date_input = document.getElementById("edit_due_date");
-            date_input.value = task.due_date
+            date_input.value = task.due_at
 
             let form = document.getElementById('edit_form');
             form.action = '/tasks/' + task.id;

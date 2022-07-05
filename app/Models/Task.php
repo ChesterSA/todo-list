@@ -9,18 +9,18 @@ class Task extends Model
 {
     protected $fillable = [
         'name',
-        'is_complete',
-        'due_date'
+        'completed_at',
+        'due_at'
     ];
 
     public function isLate()
     {
-        return Carbon::now()->isAfter($this->due_date) && !$this->is_complete;
+        return $this->completed_at === null && Carbon::now()->isAfter($this->due_at);
     }
 
     public function getIconAttribute()
     {
-        if ($this->is_complete) {
+        if ($this->completed_at !== null) {
             return '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>';
@@ -31,8 +31,8 @@ class Task extends Model
         }
     }
 
-    public function getDueDateFormattedAttribute()
+    public function getDueAtFormattedAttribute()
     {
-        return Carbon::parse($this->due_date)->format('H:i j M y') ?? 'None';
+        return Carbon::parse($this->due_at)->format('H:i j M y') ?? 'None';
     }
 }

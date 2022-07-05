@@ -22,7 +22,7 @@
         <div class="md:w-2/3">
             <input
                 class="bg-gray-100 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-                id="create_due_date" type="datetime-local" name="due_date" required>
+                id="create_due_date" type="datetime-local" name="due_at" required>
         </div>
     </div>
     <div class="md:flex md:items-center">

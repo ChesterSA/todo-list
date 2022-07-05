@@ -14,23 +14,24 @@ class TasksSeeder extends Seeder
     {
         DB::table('tasks')->insert([
             'name' => 'Ongoing Task',
-            'due_date' => Carbon::parse('+2 days'),
-            'is_complete' => false
+            'due_at' => Carbon::parse('+2 days')->setTime(12, 00),
+            'completed_at' => null
         ]);
         DB::table('tasks')->insert([
             'name' => 'Overdue Task',
-            'due_date' => Carbon::parse('-1 day'),
-            'is_complete' => false
+            'due_at' => Carbon::parse('-1 day')->setTime(9, 00),
+            'completed_at' => null
         ]);
         DB::table('tasks')->insert([
             'name' => 'Completed Task',
-            'due_date' => Carbon::parse('+1 day'),
-            'is_complete' => true
+            'due_at' => Carbon::parse('+1 day')->setTime(16, 30),
+            'completed_at' => Carbon::now()
         ]);
         DB::table('tasks')->insert([
             'name' => 'Old Task',
-            'due_date' => Carbon::parse('-2 days'),
-            'is_complete' => true
+            'due_at' => Carbon::parse('-2 days')->setTime(10, 00),
+            'completed_at' => Carbon::parse('yesterday')
+
         ]);
     }
 }

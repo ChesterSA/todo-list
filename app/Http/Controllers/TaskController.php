@@ -11,13 +11,13 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         $search = $request->search ?? '';
-        $tasks = Task::where('name', 'LIKE', "%$search%")->orderBy('due_date')->get();
+        $tasks = Task::where('name', 'LIKE', "%$search%")->orderBy('due_at')->get();
 
         $incomplete_tasks = $tasks->filter(function($task) {
-            return $task->is_complete === 0;
+            return $task->completed_at === null;
         });
         $complete_tasks = $tasks->filter(function($task) {
-            return $task->is_complete === 1;
+            return $task->completed_at !== null;
         });
 
 
@@ -26,11 +26,13 @@ class TaskController extends Controller
 
     public function store(TaskRequest $request)
     {
-        Task::create([
+        $t = Task::create([
             'name' => $request->name,
-            'is_complete' => false,
-            'due_date' => $request->due_date
+            'completed_at' => null,
+            'due_at' => $request->due_at
         ]);
+
+//        dd($t);
 
         return redirect(route('tasks.index'));
     }
@@ -38,7 +40,7 @@ class TaskController extends Controller
     public function update(TaskRequest $request, Task $task)
     {
         $task->name = $request->name;
-        $task->due_date = $request->due_date;
+        $task->due_at = $request->due_at;
         $task->save();
 
         return redirect(route('tasks.index'));
@@ -46,7 +48,7 @@ class TaskController extends Controller
 
     public function complete(Task $task)
     {
-        $task->is_complete = true;
+        $task->completed_at = Carbon::now();
         $task->save();
 
         return redirect(route('tasks.index'));

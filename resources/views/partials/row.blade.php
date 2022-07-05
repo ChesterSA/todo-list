@@ -6,7 +6,7 @@
         {{ $task->name }}
     </td>
     <td class="text-sm text-gray-900 font-light px-6 py-2 whitespace-nowrap">
-        {{ $task->due_date_formatted }}
+        {{ $task->due_at_formatted }}
     </td>
     <td class="text-sm text-gray-900 font-light px-6 py-2 whitespace-nowrap">
         <p class="inline cursor-pointer" onclick="openEditModal({{ $task }})">
@@ -17,7 +17,7 @@
             </svg>
         </p>
 
-        @if(!$task->is_complete)
+        @if(!$task->completed_at)
             <form method="POST" class="inline ml-3" action="{{route('tasks.complete', $task)}}">
                 @csrf
                 <button type="submit">
